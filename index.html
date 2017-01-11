@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 
     <title>dictionary API test</title>
-
 
 </head>
 <body>
@@ -14,22 +13,26 @@
 
 $("#button").on("click", function() {
 
-var queryURL = "https://od-api.oxforddictionaries.com:443/api/v1/entries/en/success"
+var queryURL = "https://od-api.oxforddictionaries.com:443/api/v1/entries/en/success/definitions"
 
 $.ajax({
     url: queryURL,
+    method: "GET",
     dataType: 'jsonp',
     headers: {
     "Accept": "application/json",
     "app_id": "a247e3cf",
-    "app_key": "1c86cd42c0ac009cba9492197cb1ddd9"
+    "app_key": "1c86cd42c0ac009cba9492197cb1ddd9",
     },
-    method: "GET"
+ contentType: 'application/json; charset=utf-8',
 
-}).done(function(response) {
+}).done(function(succeed) {
     console.log("success!")
     // console.log(response)
+}).fail(function(fail) {
+    console.log("Fail!")
 });
+
 });
 </script>
 </body>
